@@ -212,7 +212,8 @@
       "category": "public.app-category.social-networking",
       "icon": "build/icons/mac/icon.icns",
       "target": [
-        "dmg"
+        "dmg",
+        "zip"
       ],
       "bundleVersion": "1",
       "hardenedRuntime": true,
