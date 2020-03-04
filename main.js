@@ -227,6 +227,7 @@ function createWindow() {
       minWidth: MIN_WIDTH,
       minHeight: MIN_HEIGHT,
       autoHideMenuBar: false,
+      backgroundColor: '#fff',
       webPreferences: {
         nodeIntegration: false,
         nodeIntegrationInWorker: false,
@@ -286,7 +287,7 @@ function createWindow() {
   // Disable system main menu
   mainWindow.setMenu(null);
 
-  electronLocalshortcut.register(mainWindow, 'f5', () => {
+  electronLocalshortcut.register(mainWindow, 'F5', () => {
     mainWindow.reload();
   });
   electronLocalshortcut.register(mainWindow, 'CommandOrControl+R', () => {
@@ -428,19 +429,19 @@ ipc.on('ready-for-updates', async () => {
 
 function openReleaseNotes() {
   shell.openExternal(
-    `https://github.com/loki-project/loki-messenger/releases/tag/v${app.getVersion()}`
+    `https://github.com/loki-project/session-desktop/releases/tag/v${app.getVersion()}`
   );
 }
 
 function openNewBugForm() {
   shell.openExternal(
-    'https://github.com/loki-project/loki-messenger/issues/new'
+    'https://github.com/loki-project/session-desktop/issues/new'
   );
 }
 
 function openSupportPage() {
   shell.openExternal(
-    'https://loki-project.github.io/loki-docs/LokiServices/Messenger/'
+    'https://docs.loki.network/LokiServices/Messenger/Session/'
   );
 }
 
@@ -1025,6 +1026,7 @@ ipc.on('password-window-login', async (event, passPhrase) => {
     const passwordAttempt = true;
     await showMainWindow(passPhrase, passwordAttempt);
     sendResponse();
+
     if (passwordWindow) {
       passwordWindow.close();
       passwordWindow = null;
